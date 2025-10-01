@@ -17,7 +17,7 @@ const CustomText = ({variant, dark, children}:CustomTextProps) => {
 function styleSelector(variant:any,dark:boolean){
     let style = ""
     if(dark == true){
-        style += "text-white "
+        style += "text-white"
     }else{
         style += "text-[#0F626F] "
     }
