@@ -1,14 +1,28 @@
-import CustomText from "@/components/ui/CustomText";
+import React, { useState } from "react";
+import LoginForm from "@/components/ui/LoginForm";
+import RegisterForm from "@/components/ui/RegisterForm";
 import "@/global.css";
 import { View } from "react-native";
+import { router } from "expo-router";
 
-export default function Index() {
-  return (
-        <View className="bg-[#E2B878] w-screen h-screen">
-        <CustomText variant="large" dark={false}>
-          Hello World
-        </CustomText>
+  const index = () => {
+    const [isLogin, setIsLogin] = useState(true);
+    return (
+      <View>
+        {
+          isLogin ? (
+            <LoginForm 
+              onLoginPress={() => {router.replace('/(home)/HomeScreen')}}
+              onSwitchToRegister={() => setIsLogin(false)}
+            />
+          ) : (
+            <RegisterForm 
+              onRegisterPress={() => {router.replace('/(home)/HomeScreen'), setIsLogin(true)}}
+              onSwitchToLogin={() => setIsLogin(true)}
+            />
+          )
+        }
       </View>
-
-  );
-}
+      )
+    }
+    export default index  
